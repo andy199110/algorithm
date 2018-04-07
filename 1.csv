@@ -1,4 +1,4 @@
-num,code,name,p_change,price,change,open,high,low,preprice,pe,volratio,turnover,range,volume,selling,buying,amount,totals,industry,area,floats,fvalues,abvalues,avgprice,strength,activity,avgturnover,attack,interval3,interval6
+,code,name,p_change,price,change,open,high,low,preprice,pe,volratio,turnover,range,volume,selling,buying,amount,totals,industry,area,floats,fvalues,abvalues,avgprice,strength,activity,avgturnover,attack,interval3,interval6
 0,000908,景峰医药,10.09,6.11,0.56,6.11,6.11,6.11,5.55,39.15,1.09,0.69,0.0,38150.0,34906.0,3243.0,23309644.0,8.8,化学制药,湖南,5.51,33.65,53.75,6.11,10.74,664.0,0.001,0.0,-2.55,-18.1
 1,600354,敦煌种业,10.07,8.42,0.77,7.75,8.42,7.43,7.65,26.84,1.79,17.64,12.94,789760.0,379164.0,410596.0,631131904.0,5.28,种植业,甘肃,4.48,37.7,44.44,7.99,10.24,4158.0,0.0042,13.32,17.27,-2.66
 2,000852,石化机械,10.05,10.07,0.92,10.07,10.07,9.83,9.15,639.86,6.16,9.94,2.62,594629.0,396477.0,198151.0,596647552.0,5.98,化工机械,湖北,5.98,60.23,60.23,10.03,10.7,3498.0,0.0028,2.44,-12.59,-32.14

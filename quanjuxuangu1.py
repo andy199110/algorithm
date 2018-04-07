@@ -32,19 +32,20 @@ import time
 #所有股票筛选
 
 #1.根据pe和流通值筛选
-# all_share=ts.get_day_all()#获取所有股票数据
-# all_share_pd=pd.DataFrame(data=all_share)#数据转格式
-#all_share.to_csv('D:/python code/algorithm/1.csv')#保存数据为csv文件
+all_share=ts.get_day_all()#获取所有股票数据
+all_share_pd=pd.DataFrame(data=all_share)#数据转格式
+all_share.to_csv('D:/python code/algorithm/1.csv')#保存数据为csv文件
 all_share_name=pd.read_csv('D:/python code/algorithm/1.csv')#从csv文件中调取数据
+#all_share_name=all_share_name.merge(basics,left_index=True,right_index=True)
 all_share_name=all_share_name.as_matrix()#数据转矩阵格式
 buy_list_fr=[]#初始化股票池
 all_share_name_1=np.array(all_share_name[:,1])#表示股票代码矩阵
 pd.DataFrame(all_share_name[:,10]).to_csv('D:/python code/algorithm/3.csv')#保存pe数据为csv格式
-print all_share_name[:,10]
+#print all_share_name[:,10]
 for i in range(3512):#3512根据股票数确定
     if all_share_name[i,12]==0:#排除分母为0的情况
         continue
-    elif int(all_share_name[i,10])<=200 and int(all_share_name[i,10])>-30 and all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]<200000:#根据pe和流通量筛选
+    elif int(all_share_name[i,10])<=200 and int(all_share_name[i,10])>-30 and all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]<150000 and all_share_name[i,12]<=5:#根据pe和流通量筛选
         print all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]#流通股本的表示
         buy_list_fr=np.append(buy_list_fr,str(all_share_name_1[i]))#将符合条件的股票加入股票池
     else:
