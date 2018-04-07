@@ -31,7 +31,7 @@ import time
 
 #所有股票筛选
 
-#1.根据pe和流通值筛选
+#1.根据pe和流通值、换手率筛选
 all_share=ts.get_day_all()#获取所有股票数据
 all_share_pd=pd.DataFrame(data=all_share)#数据转格式
 all_share.to_csv('D:/python code/algorithm/1.csv')#保存数据为csv文件
@@ -45,7 +45,7 @@ pd.DataFrame(all_share_name[:,10]).to_csv('D:/python code/algorithm/3.csv')#保�
 for i in range(3512):#3512根据股票数确定
     if all_share_name[i,12]==0:#排除分母为0的情况
         continue
-    elif int(all_share_name[i,10])<=200 and int(all_share_name[i,10])>-30 and all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]<150000 and all_share_name[i,12]<=5:#根据pe和流通量筛选
+    elif int(all_share_name[i,10])<=200 and int(all_share_name[i,10])>-30 and all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]<150000 and all_share_name[i,12]<=10:#根据pe和流通量、换手率筛选
         print all_share_name[i,14]*all_share_name[i,4]/all_share_name[i,12]#流通股本的表示
         buy_list_fr=np.append(buy_list_fr,str(all_share_name_1[i]))#将符合条件的股票加入股票池
     else:
