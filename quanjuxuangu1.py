@@ -15,7 +15,7 @@ import pandas as pd
 import numpy as np
 from numba import jit
 import time
-
+import matplotlib.pyplot as plt
 #单支股票提示买卖点
 
 #  single_share=ts.get_hist_data('000908',start='2018-03-02',end='2018-04-05',ktype='30')#获取股票30分钟数据
@@ -113,7 +113,7 @@ for i in range(len(buy_list_fr)):
      else:
          # share_close = all_to_single_fenshi[:, 2]
          # share_ma20 = all_to_single_fenshi[:, 9]
-         if all_to_single_fenshi[3,2] < all_to_single_fenshi[3,9] and all_to_single_fenshi[2,2] < all_to_single_fenshi[2,9] and all_to_single_fenshi[1,2] <= all_to_single_fenshi[1,9] and all_to_single_fenshi[0,2] >= all_to_single_fenshi[0,9]:#判断股价是否上穿20均线
+         if all_to_single_fenshi[3,2] < all_to_single_fenshi[3,9] and all_to_single_fenshi[2,2] < all_to_single_fenshi[2,9] and all_to_single_fenshi[1,2] <=all_to_single_fenshi[1,9] and all_to_single_fenshi[0,2] >= all_to_single_fenshi[0,9]:#判断股价是否上穿20均线
              buy_list.extend([buy_list_fr[i]])#将符合条件股票加入股票池
 print buy_list
 buy_list=np.array(buy_list).T
@@ -121,22 +121,29 @@ buy_list=np.array(buy_list).T
 # buy_list=pd .read_csv('D:/python code/algorithm/2.csv')
 
 #4.根据流通值选股，与前面重复
-buy_list_se=[]
-for i in range(len(buy_list)):
-    single_share1 = ts.get_hist_data(code=buy_list[i])
-    single_share = pd.DataFrame(single_share1)
-    single_share=single_share.as_matrix()
-    if len(single_share)<13:
-        continue
-    else:
-        circulating_market_cap=single_share[0,4]*single_share[0,2]/single_share[0,13]
-    # circulating_market_cap = single_share[0, 4] * single_share[0, 2] / single_share[0, 13]
-    if circulating_market_cap<=200000:
-        buy_list_se=np.append(buy_list_se,buy_list[i])
-print buy_list_se
+# buy_list_se=[]
+# for i in range(len(buy_list)):
+#     single_share1 = ts.get_hist_data(code=buy_list[i])
+#     single_share = pd.DataFrame(single_share1)
+#     single_share=single_share.as_matrix()
+#     if len(single_share)<13:
+#         continue
+#     else:
+#         circulating_market_cap=single_share[0,4]*single_share[0,2]/single_share[0,13]
+#     # circulating_market_cap = single_share[0, 4] * single_share[0, 2] / single_share[0, 13]
+#     if circulating_market_cap<=200000:
+#         buy_list_se=np.append(buy_list_se,buy_list[i])
+# print buy_list_se
     #a=a+1
     #t = time.localtime()
-
+for i in range(len(buy_list)):
+    share_data=ts.get_hist_data(code=buy_list[i],ktype='30')
+    share_data=pd.DataFrame(share_data)
+    share_data=share_data.as_matrix()
+    plt.figure(i+1)
+    plt.title(buy_list[i])
+    plt.plot(range(20),share_data[0:20,2], 'r--',range(20),share_data[0:20,9],'g--',range(20),share_data[0:20,8],'b--',range(20),share_data[0:20,7],'y--')
+    plt.show()
 # print t
 # print a
 
