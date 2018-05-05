@@ -10,6 +10,8 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+
 import tushare as ts
 import pandas as pd
 import numpy as np
@@ -111,12 +113,12 @@ for i in range(len(buy_list_fr)):
      # share_time = all_to_single_share.index
 
      # print share_close
-     if len(all_to_single_fenshi) < 4:#排除数据缺失的情况
+     if len(all_to_single_fenshi) < 5:#排除数据缺失的情况
          continue
      else:
          # share_close = all_to_single_fenshi[:, 2]
          # share_ma20 = all_to_single_fenshi[:, 9]
-         if all_to_single_fenshi[3,2] < all_to_single_fenshi[3,9] and all_to_single_fenshi[2,2] < all_to_single_fenshi[2,9] and all_to_single_fenshi[1,2] >=all_to_single_fenshi[1,9] and all_to_single_fenshi[0,2] >= all_to_single_fenshi[0,9] :#判断股价是否上穿20均线
+         if all_to_single_fenshi[3,2] < all_to_single_fenshi[4,2] and all_to_single_fenshi[2,2] < all_to_single_fenshi[3,2] and all_to_single_fenshi[1,2] >=all_to_single_fenshi[2,2] and all_to_single_fenshi[0,2] >= all_to_single_fenshi[1,2] :#判断股价是否上穿20均线
              buy_list.extend([buy_list_fr[i]])#将符合条件股票加入股票池
 print buy_list
 
@@ -139,6 +141,7 @@ print buy_list
 # print buy_list_se
     #a=a+1
     #t = time.localtime()
+
 
 profit=[]
 sum_profit=0
